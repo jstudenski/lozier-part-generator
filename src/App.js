@@ -6,15 +6,20 @@ import './App.css';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 
-const SortableItem = SortableElement(({value}) =>
-  <li>{value}</li>
+const Fixture = SortableElement(({value}) =>
+  <li style={{width: value.width}}>{value.name}</li>
 );
 
 const SortableList = SortableContainer(({items}) => {
+  console.log(items);
   return (
     <ul>
       {items.map((value, index) => (
-        <SortableItem className="sortable-item" key={`item-${index}`} index={index} value={value} />
+        <Fixture
+          key={`item-${index}`}
+          index={index}
+          value={value}
+        />
       ))}
     </ul>
   );
@@ -22,7 +27,8 @@ const SortableList = SortableContainer(({items}) => {
 
 class SortableComponent extends Component {
   state = {
-    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+    // items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+    items: [{name: 'Item 1', width: 48},{name: 'Item 2', width: 36},{name: 'Item 3', width: 24},],
   };
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({
@@ -30,7 +36,15 @@ class SortableComponent extends Component {
     });
   };
   render() {
-    return <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />;
+    return (
+      <SortableList
+        axis={'x'}
+        lockAxis={'x'}
+        items={this.state.items}
+        onSortEnd={this.onSortEnd}
+        helperClass={'helper'}
+      />
+    );
   }
 }
 
