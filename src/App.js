@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-
 const Fixture = SortableElement(({value}) =>
-  <li style={{width: value.width, height: value.height}}>{value.name}</li>
+  <li style={{width: value.width, height: value.height}}>
+    {value.height}" x {value.width}"
+  </li>
 );
 
 const SortableList = SortableContainer(({items}) => {
@@ -27,24 +26,23 @@ const SortableList = SortableContainer(({items}) => {
 
 class SortableComponent extends Component {
   state = {
-    // items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-    items:[
-            {
-              name: '4ft',
-              width: 48,
-              height: 72,
-            },
-            {
-              name: '3ft',
-              width: 36,
-              height: 72,
-            },
-            {
-              name: '2ft',
-              width: 24,
-              height: 72
-            },
-          ],
+    items: [
+      {
+        name: '4ft',
+        width: 48,
+        height: 36,
+      },
+      {
+        name: '3ft',
+        width: 36,
+        height: 72,
+      },
+      {
+        name: '2ft',
+        width: 24,
+        height: 120,
+      },
+    ],
   };
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({
@@ -70,12 +68,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Lozier Parts</h1>
         </header>
         <SortableComponent></SortableComponent>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Drag them around
         </p>
       </div>
     );
