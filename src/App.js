@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import './normalize.css';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const Fixture = SortableElement(({value}) =>
   <div className="Fixture" style={{width: value.width, height: value.height}}>
@@ -10,7 +12,7 @@ const Fixture = SortableElement(({value}) =>
 );
 
 const SortableList = SortableContainer(({items}) => {
-  console.log(items);
+  // console.log(items);
   return (
     <div className="SortableContainer">
       {items.map((value, index) => (
@@ -23,6 +25,8 @@ const SortableList = SortableContainer(({items}) => {
     </div>
   );
 });
+
+
 
 class SortableComponent extends Component {
   state = {
@@ -98,9 +102,48 @@ class SortableComponent extends Component {
   }
 }
 
+const verticalMarks = {
+  120: '120',
+  114: '114',
+  108: '108',
+  102: '102',
+  96: '96',
+  90: '90',
+  84: '84',
+  78: '78',
+  72: '72',
+  66: '66',
+  60: '60',
+  54: '54',
+  48: '48',
+  42: '42',
+  36: '36',
+};
+
+const horizontalMarks = {
+  48: '48',
+  24: '24',
+};
+
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      verticalBound: 36,
+      horizontalBound: 48,
+    };
+  }
+
+
   render() {
+    this.verticalBoundChange = (e) => {
+      this.setState({ verticalBound: e });
+    }
+    this.horizontalBoundChange = (e) => {
+      this.setState({ horizontalBound: e });
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -110,6 +153,44 @@ class App extends Component {
         <p className="App-intro">
           Drag them around
         </p>
+        <div className="builder">
+          <Slider
+            vertical={true}
+            min={36}
+            max={120}
+            step={6}
+            dots={true}
+            marks={verticalMarks}
+            value={this.state.verticalBound}
+            onChange={this.verticalBoundChange}
+            style={{height: '168px',display: 'inline-block', position: 'absolute', right: -6, zIndex: 1}}
+          />
+          <Slider
+            min={24}
+            max={48}
+            step={24}
+            dots={true}
+            marks={horizontalMarks}
+            value={this.state.horizontalBound}
+            onChange={this.horizontalBoundChange}
+            style={{width: '48px', display: 'inline-block', position: 'absolute', bottom: -6, right: 0, zIndex: 1}}
+          />
+          <div
+            style={
+              {
+                "backgroundColor": "lime",
+                "width": "96px",
+                "height": "204px",
+                "bottom": "0px",
+                "left": "0px",
+                "position": "absolute",
+                width: this.state.horizontalBound*2,
+                height: this.state.verticalBound*2
+              }
+            }
+            className='builder-item'
+            >here</div>
+        </div>
       </div>
     );
   }

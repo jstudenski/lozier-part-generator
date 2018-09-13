@@ -29,6 +29,7 @@
   display: inline-block;
 }
 
+
 .Fixture {
   margin-bottom: -4px;
   background-color: aquamarine;
@@ -42,5 +43,13 @@
   display: inline-block;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.builder {
+  background-color: lightblue;
+  position: relative;
+  display: inline-block;
+  width: 96px;
+  height: 240px;
 }
 
