@@ -4,31 +4,29 @@ import './normalize.css';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 const Fixture = SortableElement(({value}) =>
-  <li style={{width: value.width, height: value.height}}>
+  <div className="Fixture" style={{width: value.width, height: value.height}}>
     {value.height}" x {value.width}"
-  </li>
+  </div>
 );
 
 const SortableList = SortableContainer(({items}) => {
   console.log(items);
   return (
-    <div style={{backgroundColor: '#999', display: 'inline-block'}}>
-      <ul style={{margin: 0}}>
-        {items.map((value, index) => (
-          <Fixture
-            key={`item-${index}`}
-            index={index}
-            value={value}
-          />
-        ))}
-      </ul>
+    <div className="SortableContainer">
+      {items.map((value, index) => (
+        <Fixture
+          key={`item-${index}`}
+          index={index}
+          value={value}
+        />
+      ))}
     </div>
   );
 });
 
 class SortableComponent extends Component {
   state = {
-    items: [
+    items:[
       {
         name: '4ft',
         width: 48,
@@ -44,7 +42,41 @@ class SortableComponent extends Component {
         width: 24,
         height: 120,
       },
-    ],
+    ]
+
+    // items:[[
+    //   {
+    //     name: '4ft',
+    //     width: 48,
+    //     height: 36,
+    //   },
+    //   {
+    //     name: '3ft',
+    //     width: 36,
+    //     height: 72,
+    //   },
+    //   {
+    //     name: '2ft',
+    //     width: 24,
+    //     height: 120,
+    //   },
+    // ],[
+    //   {
+    //     name: 'a',
+    //     width: 48,
+    //     height: 36,
+    //   },
+    //   {
+    //     name: 'b',
+    //     width: 36,
+    //     height: 72,
+    //   },
+    //   {
+    //     name: 'c',
+    //     width: 24,
+    //     height: 120,
+    //   },
+    // ]]
   };
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({
@@ -53,6 +85,7 @@ class SortableComponent extends Component {
   };
   render() {
     return (
+      <div>
         <SortableList
           axis={'x'}
           lockAxis={'x'}
@@ -60,7 +93,7 @@ class SortableComponent extends Component {
           onSortEnd={this.onSortEnd}
           helperClass={'helper'}
         />
-
+      </div>
     );
   }
 }

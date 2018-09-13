@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.5.0",
+    "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.5.0",
     "react-scripts": "1.1.5",
     "react-sortable-hoc": "^0.8.3"

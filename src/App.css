@@ -24,7 +24,14 @@
   to { transform: rotate(360deg); }
 }
 
-li {
+.SortableContainer {
+  background-color: #999;
+  display: inline-block;
+}
+
+.Fixture {
+  margin-bottom: -4px;
+  background-color: aquamarine;
   color: black;
   font-size: 0.7em;
   height: 20px;
@@ -34,8 +41,6 @@ li {
   border-color: #222;
   display: inline-block;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-.helper {
-  background-color: #999;
-}
