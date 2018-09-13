@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './normalize.css';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 const Fixture = SortableElement(({value}) =>
@@ -12,15 +12,17 @@ const Fixture = SortableElement(({value}) =>
 const SortableList = SortableContainer(({items}) => {
   console.log(items);
   return (
-    <ul>
-      {items.map((value, index) => (
-        <Fixture
-          key={`item-${index}`}
-          index={index}
-          value={value}
-        />
-      ))}
-    </ul>
+    <div style={{backgroundColor: '#999', display: 'inline-block'}}>
+      <ul style={{margin: 0}}>
+        {items.map((value, index) => (
+          <Fixture
+            key={`item-${index}`}
+            index={index}
+            value={value}
+          />
+        ))}
+      </ul>
+    </div>
   );
 });
 
@@ -51,13 +53,14 @@ class SortableComponent extends Component {
   };
   render() {
     return (
-      <SortableList
-        axis={'x'}
-        lockAxis={'x'}
-        items={this.state.items}
-        onSortEnd={this.onSortEnd}
-        helperClass={'helper'}
-      />
+        <SortableList
+          axis={'x'}
+          lockAxis={'x'}
+          items={this.state.items}
+          onSortEnd={this.onSortEnd}
+          helperClass={'helper'}
+        />
+
     );
   }
 }
