@@ -7,7 +7,7 @@ import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
 
 
 const Fixture = SortableElement(({value}) =>
-  <li style={{width: value.width}}>{value.name}</li>
+  <li style={{width: value.width, height: value.height}}>{value.name}</li>
 );
 
 const SortableList = SortableContainer(({items}) => {
@@ -28,7 +28,23 @@ const SortableList = SortableContainer(({items}) => {
 class SortableComponent extends Component {
   state = {
     // items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-    items: [{name: 'Item 1', width: 48},{name: 'Item 2', width: 36},{name: 'Item 3', width: 24},],
+    items:[
+            {
+              name: '4ft',
+              width: 48,
+              height: 72,
+            },
+            {
+              name: '3ft',
+              width: 36,
+              height: 72,
+            },
+            {
+              name: '2ft',
+              width: 24,
+              height: 72
+            },
+          ],
   };
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({
