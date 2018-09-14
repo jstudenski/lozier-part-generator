@@ -4,17 +4,7 @@ import './normalize.css';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-
-const Fixture = SortableElement(({value}) =>
-  <div
-    className="Fixture"
-    style={{
-      width: (value.width*2),
-      height: (value.height*2)
-  }}>
-    {value.height}" x {value.width}"
-  </div>
-);
+import Fixture from './components/Fixture';
 
 const SortableList = SortableContainer(({items}) => {
   // console.log(items);
@@ -30,8 +20,6 @@ const SortableList = SortableContainer(({items}) => {
     </div>
   );
 });
-
-
 
 class SortableComponent extends Component {
   constructor(props) {
