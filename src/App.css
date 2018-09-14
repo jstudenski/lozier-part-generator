@@ -62,9 +62,18 @@
   bottom: 0px;
   left: 0px;
   position: absolute;
+  box-sizing: border-box;
+  padding-top: 10px;
 }
 
 .row {
-  background-color: #f1f1f1;
   padding: 40px;
+}
+
+.row:nth-child(even) {
+  background: #f1f1f1;
+}
+
+.add-btn {
+  margin-left: 30px;
 }

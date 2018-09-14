@@ -6,7 +6,12 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 const Fixture = SortableElement(({value}) =>
-  <div className="Fixture" style={{width: (value.width*2), height: (value.height*2)}}>
+  <div
+    className="Fixture"
+    style={{
+      width: (value.width*2),
+      height: (value.height*2)
+  }}>
     {value.height}" x {value.width}"
   </div>
 );
@@ -29,24 +34,22 @@ const SortableList = SortableContainer(({items}) => {
 
 
 class SortableComponent extends Component {
-  state = {
-    items:[
-      {
-        name: '4ft',
-        width: 48,
-        height: 36,
-      },
-      {
-        name: '3ft',
-        width: 36,
-        height: 72,
-      },
-      {
-        name: '2ft',
-        width: 24,
-        height: 120,
-      },
-    ]
+  constructor(props) {
+    super(props);
+    this.state = {
+      items:[
+        {
+          name: '4ft',
+          width: 48,
+          height: 36,
+        },
+        {
+          name: '2ft',
+          width: 48,
+          height: 120,
+        },
+      ]
+  }
 
     // items:[[
     //   {
@@ -125,14 +128,38 @@ const horizontalMarks = {
   24: '24',
 };
 
-
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       verticalBound: 36,
       horizontalBound: 48,
+      items: [
+        {
+          name: '4ft',
+          width: 48,
+          height: 36,
+        },
+        {
+          name: '2ft',
+          width: 24,
+          height: 120,
+        },
+      ]
     };
+    this.addFixture = this.addFixture.bind(this);
+  }
+
+  addFixture(e) {
+
+
+    const temp = {
+      width: this.state.horizontalBound,
+      height: this.state.verticalBound,
+    }
+    console.log(temp)
+    this.setState({ myArray: [...this.state.myArray, ...[1,2,3] ] })
+    // this.setState({ items: [...this.state.items, temp] })
   }
 
 
@@ -182,13 +209,19 @@ class App extends Component {
               {this.state.verticalBound}x{this.state.horizontalBound}
             </div>
           </div>
+          <button onClick={this.addFixture} className="add-btn">Add</button>
         </div>
         <div className="row">
-        <SortableComponent></SortableComponent>
+        <SortableComponent
+
+        >
+        </SortableComponent>
         </div>
-        <p className="App-intro">
-          Drag them around
-        </p>
+        <div className="row">
+          <p className="App-intro">
+            Drag them around
+          </p>
+        </div>
       </div>
     );
   }
