@@ -6,7 +6,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 const Fixture = SortableElement(({value}) =>
-  <div className="Fixture" style={{width: value.width, height: value.height}}>
+  <div className="Fixture" style={{width: (value.width*2), height: (value.height*2)}}>
     {value.height}" x {value.width}"
   </div>
 );
@@ -149,48 +149,46 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Lozier Parts</h1>
         </header>
+        <div className="row">
+          <div className="builder">
+            <Slider
+              vertical={true}
+              min={36}
+              max={120}
+              step={6}
+              dots={true}
+              marks={verticalMarks}
+              value={this.state.verticalBound}
+              onChange={this.verticalBoundChange}
+              style={{height: '168px',display: 'inline-block', position: 'absolute', right: -20, zIndex: 1}}
+            />
+            <Slider
+              min={24}
+              max={48}
+              step={24}
+              dots={true}
+              marks={horizontalMarks}
+              value={this.state.horizontalBound}
+              onChange={this.horizontalBoundChange}
+              style={{width: '48px', display: 'inline-block', position: 'absolute', bottom: -20, right: 0, zIndex: 1}}
+            />
+            <div
+              style={{
+                width: this.state.horizontalBound*2,
+                height: this.state.verticalBound*2
+              }}
+              className="builder-item"
+              >
+              {this.state.verticalBound}x{this.state.horizontalBound}
+            </div>
+          </div>
+        </div>
+        <div className="row">
         <SortableComponent></SortableComponent>
+        </div>
         <p className="App-intro">
           Drag them around
         </p>
-        <div className="builder">
-          <Slider
-            vertical={true}
-            min={36}
-            max={120}
-            step={6}
-            dots={true}
-            marks={verticalMarks}
-            value={this.state.verticalBound}
-            onChange={this.verticalBoundChange}
-            style={{height: '168px',display: 'inline-block', position: 'absolute', right: -6, zIndex: 1}}
-          />
-          <Slider
-            min={24}
-            max={48}
-            step={24}
-            dots={true}
-            marks={horizontalMarks}
-            value={this.state.horizontalBound}
-            onChange={this.horizontalBoundChange}
-            style={{width: '48px', display: 'inline-block', position: 'absolute', bottom: -6, right: 0, zIndex: 1}}
-          />
-          <div
-            style={
-              {
-                "backgroundColor": "lime",
-                "width": "96px",
-                "height": "204px",
-                "bottom": "0px",
-                "left": "0px",
-                "position": "absolute",
-                width: this.state.horizontalBound*2,
-                height: this.state.verticalBound*2
-              }
-            }
-            className='builder-item'
-            >here</div>
-        </div>
       </div>
     );
   }
