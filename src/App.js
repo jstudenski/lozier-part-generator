@@ -5,21 +5,7 @@ import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Fixture from './components/Fixture';
-
-const SortableList = SortableContainer(({items}) => {
-  // console.log(items);
-  return (
-    <div className="SortableContainer">
-      {items.map((value, index) => (
-        <Fixture
-          key={`item-${index}`}
-          index={index}
-          value={value}
-        />
-      ))}
-    </div>
-  );
-});
+import Group from './components/Group';
 
 class SortableComponent extends Component {
   constructor(props) {
@@ -81,7 +67,7 @@ class SortableComponent extends Component {
   render() {
     return (
       <div>
-        <SortableList
+        <Group
           axis={'x'}
           lockAxis={'x'}
           items={this.state.items}
@@ -200,9 +186,7 @@ class App extends Component {
           <button onClick={this.addFixture} className="add-btn">Add</button>
         </div>
         <div className="row">
-        <SortableComponent
-
-        >
+        <SortableComponent>
         </SortableComponent>
         </div>
         <div className="row">
