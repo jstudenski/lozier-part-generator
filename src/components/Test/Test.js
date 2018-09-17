@@ -12,11 +12,14 @@ const getItems = (count, offset = 0) =>
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
+    console.log(list, startIndex, endIndex)
+
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
 
-    return result;
+    console.log(result);
+   // return result;
 };
 
 /**
@@ -69,13 +72,14 @@ class App extends Component {
      * source arrays stored in the state.
      */
     id2List = {
-        droppable: 'items',
-        droppable2: 'selected'
+        droppable0: this.props.test[0],
+        droppable1: this.props.test[1]
     };
 
-    getList = id => this.state[this.id2List[id]];
+  getList = id => this.props.test[this.id2List[id]];
 
     onDragEnd = result => {
+
         const { source, destination } = result;
 
         // dropped outside the list
@@ -83,9 +87,12 @@ class App extends Component {
             return;
         }
 
+     //   console.log(this.getList(source.droppableId));
+
+
         if (source.droppableId === destination.droppableId) {
             const items = reorder(
-                this.getList(source.droppableId),
+              this.props.test[0], // this.getList(source.droppableId),
                 source.index,
                 destination.index
             );
@@ -115,11 +122,45 @@ class App extends Component {
     // Normally you would want to split things out into separate components.
     // But in this example everything is just done in one place for simplicity
     render() {
-      console.log(this.state.items);
-      console.log(this.state.selected);
+      // console.log(this.state.items);
+     //  console.log(this.state.selected);
+     // onDragEnd={this.onDragEnd}
         return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <Droppable droppableId="droppable">
+            <DragDropContext onDragEnd={this.props.onDragEnd}>
+
+              {this.props.test.map((item, index) => (
+                  <Droppable droppableId={`${index}`}>
+                  {(provided, snapshot) => (
+                      <div
+                          ref={provided.innerRef}
+                          style={getListStyle(snapshot.isDraggingOver)}>
+                          {item.map((itemB, indexB) => (
+                              <Draggable
+                                  key={itemB.id}
+                                  draggableId={itemB.id}
+                                  index={indexB}>
+                                  {(provided, snapshot) => (
+                                      <div
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                          style={getItemStyle(
+                                              snapshot.isDragging,
+                                              provided.draggableProps.style
+                                          )}>
+                                          {itemB.content}
+                                      </div>
+                                  )}
+                              </Draggable>
+                          ))}
+                          {provided.placeholder}
+                      </div>
+                  )}
+              </Droppable>
+              ))}
+
+
+                {/* <Droppable droppableId="droppable">
                     {(provided, snapshot) => (
                         <div
                             ref={provided.innerRef}
@@ -174,7 +215,8 @@ class App extends Component {
                             {provided.placeholder}
                         </div>
                     )}
-                </Droppable>
+                </Droppable> */}
+
             </DragDropContext>
         );
     }
@@ -183,14 +225,13 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.items[0],
-    selected: state.items[1]
+    test: state.test
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    // onWidthChange: (e) => dispatch({type: 'WIDTH_CHANGE', value: e}),
+    onDragEnd: (e) => dispatch({type: 'ON_DRAG_END', value: e}),
     // onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e}),
     // onAddButton: () => dispatch({type: 'ADD_BUTTON'}),
   };
