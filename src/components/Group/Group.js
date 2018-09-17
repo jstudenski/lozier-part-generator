@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './group.css'
+import './group.css';
+import { connect } from 'react-redux';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import Fixture from '../Fixture';
 
@@ -26,12 +26,19 @@ const Group = SortableContainer(({items}) => {
   );
 });
 
-Group.propTypes = {
-  // title: PropTypes.string.isRequired,
+const mapStateToProps = state => {
+  return {
+    items: state.items,
+  };
 };
 
-Group.defaultProps = {
-  // title: 'Hello World',
+const mapDispatchToProps = dispatch => {
+  return {
+    // onWidthChange: (e) => dispatch({type: 'WIDTH_CHANGE', value: e}),
+    // onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e}),
+    // onAddButton: () => dispatch({type: 'ADD_BUTTON'}),
+    // onHeightChange: () => dispatch()
+  };
 };
 
-export default Group
+export default connect(mapStateToProps, mapDispatchToProps)(Group);

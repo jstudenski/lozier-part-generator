@@ -1,28 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './builder.css'
 import { connect } from 'react-redux';
 import Slider from 'rc-slider';
 
 class Builder extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     verticalBound: 36,
-  //     horizontalBound: 48,
-  //   };
-  // }
 
   render() {
-
-    // this.verticalBoundChange = (e) => {
-    //   this.setState({ verticalBound: e });
-    // }
-    // this.horizontalBoundChange = (e) => {
-    //   this.setState({ horizontalBound: e });
-    // }
-
-
     const verticalMarks = {
       120: '120',
       114: '114',
@@ -45,7 +28,6 @@ class Builder extends React.Component {
       48: '48',
       24: '24',
     };
-
 
     return (
       <div>
@@ -81,20 +63,11 @@ class Builder extends React.Component {
           {this.props.builderHeight}x{this.props.builderWidth}
         </div>
       </div>
-      <button onClick={this.addFixture} className="add-btn">Add</button>
+      <button onClick={this.props.onAddButton} className="add-btn">Add</button>
     </div>
     )
   }
 }
-
-Builder.propTypes = {
-  // title: PropTypes.string.isRequired,
-};
-
-Builder.defaultProps = {
-  // title: 'Hello World',
-};
-
 
 const mapStateToProps = state => {
   return {
@@ -106,7 +79,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onWidthChange: (e) => dispatch({type: 'WIDTH_CHANGE', value: e}),
-    onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e})
+    onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e}),
+    onAddButton: () => dispatch({type: 'ADD_BUTTON'}),
     // onHeightChange: () => dispatch()
   };
 };

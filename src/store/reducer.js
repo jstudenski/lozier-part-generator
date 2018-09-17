@@ -1,29 +1,39 @@
 const initialState = {
-  builderWidth: 24,
+  builderWidth: 48,
   builderHeight: 72,
+  items:[
+    {
+      width: 48,
+      height: 36,
+    },
+    {
+      width: 48,
+      height: 120,
+    },
+  ]
 }
 
 const reducer = (state = initialState, action) => {
-  console.log(action);
-  // this.verticalBoundChange = (e) => {
-  //   this.setState({ verticalBound: e });
-  // }
-  // this.horizontalBoundChange = (e) => {
-  //   this.setState({ horizontalBound: e });
-  // }
-
-
   if (action.type === 'HEIGHT_CHANGE') {
+    return {
+      ...state,
+      builderHeight: action.value,
+    }
+  }
+  if (action.type === 'WIDTH_CHANGE') {
     return {
       ...state,
       builderWidth: action.value,
     }
   }
-
-  if (action.type === 'WIDTH_CHANGE') {
+  if (action.type === 'ADD_BUTTON') {
+    const temp = {
+      width: state.builderWidth,
+      height: state.builderHeight,
+    }
     return {
       ...state,
-      builderWidth: action.value,
+      items: [...state.items, temp]
     }
   }
   return state;
