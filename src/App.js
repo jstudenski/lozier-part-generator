@@ -6,6 +6,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Fixture from './components/Fixture';
 import Group from './components/Group';
+import Builder from './components/Builder';
 
 class SortableComponent extends Component {
   constructor(props) {
@@ -59,11 +60,7 @@ class SortableComponent extends Component {
     //   },
     // ]]
   };
-  onSortEnd = ({oldIndex, newIndex}) => {
-    this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex),
-    });
-  };
+
   render() {
     return (
       <div>
@@ -79,28 +76,28 @@ class SortableComponent extends Component {
   }
 }
 
-const verticalMarks = {
-  120: '120',
-  114: '114',
-  108: '108',
-  102: '102',
-  96: '96',
-  90: '90',
-  84: '84',
-  78: '78',
-  72: '72',
-  66: '66',
-  60: '60',
-  54: '54',
-  48: '48',
-  42: '42',
-  36: '36',
-};
-
-const horizontalMarks = {
-  48: '48',
-  24: '24',
-};
+// const verticalMarks = {
+//   120: '120',
+//   114: '114',
+//   108: '108',
+//   102: '102',
+//   96: '96',
+//   90: '90',
+//   84: '84',
+//   78: '78',
+//   72: '72',
+//   66: '66',
+//   60: '60',
+//   54: '54',
+//   48: '48',
+//   42: '42',
+//   36: '36',
+// };
+//
+// const horizontalMarks = {
+//   48: '48',
+//   24: '24',
+// };
 
 class App extends Component {
   constructor(props){
@@ -138,12 +135,12 @@ class App extends Component {
 
 
   render() {
-    this.verticalBoundChange = (e) => {
-      this.setState({ verticalBound: e });
-    }
-    this.horizontalBoundChange = (e) => {
-      this.setState({ horizontalBound: e });
-    }
+    // this.verticalBoundChange = (e) => {
+    //   this.setState({ verticalBound: e });
+    // }
+    // this.horizontalBoundChange = (e) => {
+    //   this.setState({ horizontalBound: e });
+    // }
 
     return (
       <div className="App">
@@ -151,7 +148,8 @@ class App extends Component {
           <h1 className="App-title">Lozier Parts</h1>
         </header>
         <div className="row">
-          <div className="builder">
+          <Builder />
+          {/* <div className="builderOld">
             <Slider
               vertical={true}
               min={36}
@@ -183,7 +181,7 @@ class App extends Component {
               {this.state.verticalBound}x{this.state.horizontalBound}
             </div>
           </div>
-          <button onClick={this.addFixture} className="add-btn">Add</button>
+          <button onClick={this.addFixture} className="add-btn">Add</button> */}
         </div>
         <div className="row">
         <SortableComponent>
