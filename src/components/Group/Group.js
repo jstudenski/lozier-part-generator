@@ -1,11 +1,10 @@
 import React from 'react';
 import './group.css';
 import { connect } from 'react-redux';
-import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import {SortableContainer, arrayMove} from 'react-sortable-hoc';
 import Fixture from '../Fixture';
 
 const Group = SortableContainer(({items}) => {
-  console.log(items);
 
   this.onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({

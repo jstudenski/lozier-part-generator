@@ -31,7 +31,7 @@ class Builder extends React.Component {
 
     return (
       <div>
-      <div className="builderOld">
+      <div className="builder">
         <Slider
           vertical={true}
           min={36}

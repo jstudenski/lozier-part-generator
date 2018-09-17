@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './fixture.css'
 import { SortableElement } from 'react-sortable-hoc';
 
@@ -10,7 +9,7 @@ const Fixture = SortableElement(({value}) =>
       width: (value.width*2),
       height: (value.height*2)
   }}>
-    {value.height}" x {value.width}"
+    {value.height} x {value.width}
   </div>
 );
 

@@ -29,26 +29,7 @@
   display: inline-block;
 }
 
-.builderOld {
-  background-color: #ffffff;
-  position: relative;
-  display: inline-block;
-  width: 96px;
-  height: 240px;
-}
 
-.builder-item {
-  font-size: .9em;
-  background-color: #e0e0e0;
-  border: 1px solid #9E9E9E;
-  width: 96px;
-  height: 84px;
-  bottom: 0px;
-  left: 0px;
-  position: absolute;
-  box-sizing: border-box;
-  padding-top: 10px;
-}
 
 .row {
   padding: 40px;

@@ -1,6 +1,7 @@
 .builder {
-  background-color: #23081A;
-  color: #DCF7E5;
-  width: 150px;
-  border-radius: 5px;
+  background-color: #ffffff;
+  position: relative;
+  display: inline-block;
+  width: 96px;
+  height: 240px;
 }
