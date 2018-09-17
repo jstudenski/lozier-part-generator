@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './normalize.css';
 import 'rc-slider/assets/index.css';
-import Group from './components/Group';
+import Test from './components/Test';
 import Builder from './components/Builder';
 import Diagram from './components/Diagram';
 
@@ -20,9 +20,10 @@ class App extends Component {
           <Diagram />
         </div>
         <div className="row">
-          <p className="App-intro">
+          <Test></Test>
+          {/* <p className="App-intro">
             Drag them around
-          </p>
+          </p> */}
         </div>
       </div>
     );
