@@ -13,23 +13,17 @@
 .App-title {
   font-size: 1em;
   float: left;
+  padding-left: 25px;
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .SortableContainer {
   background-color: #999;
   display: inline-block;
 }
-
-
 
 .row {
   padding: 40px;

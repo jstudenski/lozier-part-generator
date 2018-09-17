@@ -8,7 +8,7 @@ const initialState = {
     },
     {
       width: 48,
-      height: 120,
+      height: 114,
     },
   ]
 }
