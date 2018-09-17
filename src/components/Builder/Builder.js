@@ -5,31 +5,24 @@ import { connect } from 'react-redux';
 import Slider from 'rc-slider';
 
 class Builder extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      verticalBound: 36,
-      horizontalBound: 48,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState(prevState => ({
-      counter: prevState.counter + 1
-    }));
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     verticalBound: 36,
+  //     horizontalBound: 48,
+  //   };
+  // }
 
   render() {
 
-    this.verticalBoundChange = (e) => {
-      this.setState({ verticalBound: e });
-    }
-    this.horizontalBoundChange = (e) => {
-      this.setState({ horizontalBound: e });
-    }
+    // this.verticalBoundChange = (e) => {
+    //   this.setState({ verticalBound: e });
+    // }
+    // this.horizontalBoundChange = (e) => {
+    //   this.setState({ horizontalBound: e });
+    // }
 
-    
+
     const verticalMarks = {
       120: '120',
       114: '114',
@@ -64,8 +57,8 @@ class Builder extends React.Component {
           step={6}
           dots={true}
           marks={verticalMarks}
-          value={this.state.verticalBound}
-          onChange={this.verticalBoundChange}
+          value={this.props.builderHeight}
+          onChange={this.props.onHeightChange}
           style={{height: '168px',display: 'inline-block', position: 'absolute', right: -20, zIndex: 1}}
         />
         <Slider
@@ -74,18 +67,18 @@ class Builder extends React.Component {
           step={24}
           dots={true}
           marks={horizontalMarks}
-          value={this.state.horizontalBound}
-          onChange={this.horizontalBoundChange}
+          value={this.props.builderWidth}
+          onChange={this.props.onWidthChange}
           style={{width: '48px', display: 'inline-block', position: 'absolute', bottom: -20, right: 0, zIndex: 1}}
         />
         <div
           style={{
-            width: this.state.horizontalBound*2,
-            height: this.state.verticalBound*2
+            width: this.props.builderWidth*2,
+            height: this.props.builderHeight*2
           }}
           className="builder-item"
           >
-          {this.state.verticalBound}x{this.state.horizontalBound}
+          {this.props.builderHeight}x{this.props.builderWidth}
         </div>
       </div>
       <button onClick={this.addFixture} className="add-btn">Add</button>
@@ -102,10 +95,20 @@ Builder.defaultProps = {
   // title: 'Hello World',
 };
 
+
 const mapStateToProps = state => {
   return {
-    crt: state.counter
+    builderWidth: state.builderWidth,
+    builderHeight: state.builderHeight
   };
-}
+};
 
-export default connect(mapStateToProps)(Builder);
+const mapDispatchToProps = dispatch => {
+  return {
+    onWidthChange: (e) => dispatch({type: 'WIDTH_CHANGE', value: e}),
+    onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e})
+    // onHeightChange: () => dispatch()
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Builder);
