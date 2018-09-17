@@ -20,11 +20,6 @@
   font-size: large;
 }
 
-.SortableContainer {
-  background-color: #999;
-  display: inline-block;
-}
-
 .row {
   padding: 40px;
 }

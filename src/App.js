@@ -4,6 +4,7 @@ import './normalize.css';
 import 'rc-slider/assets/index.css';
 import Group from './components/Group';
 import Builder from './components/Builder';
+import Diagram from './components/Diagram';
 
 class App extends Component {
   render() {
@@ -16,12 +17,7 @@ class App extends Component {
           <Builder />
         </div>
         <div className="row">
-          <Group
-            axis={'x'}
-            lockAxis={'x'}
-            onSortEnd={this.onSortEnd}
-            helperClass={'helper'}
-          />
+          <Diagram />
         </div>
         <div className="row">
           <p className="App-intro">

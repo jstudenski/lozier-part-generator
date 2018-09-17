@@ -1,0 +1,8 @@
+.SortableContainer {
+  background-color: #d2d2d2;
+  display: inline-block;
+  margin: 30px 30px 30px 0;
+  min-width: 98px;
+  min-height: 98px;
+  margin-bottom: -4px;
+}

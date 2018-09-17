@@ -30,10 +30,11 @@ class Builder extends React.Component {
     };
 
     return (
-      <div>
+      <div className="builder-container">
       <div className="builder">
         <Slider
           vertical={true}
+          disabled={(this.props.items[this.props.items.length-1].length != 0) ? true : false }
           min={36}
           max={120}
           step={6}
@@ -64,6 +65,7 @@ class Builder extends React.Component {
         </div>
       </div>
       <button onClick={this.props.onAddButton} className="add-btn">Add</button>
+      <button onClick={this.props.onNewSection} className="add-btn">New Section</button>
     </div>
     )
   }
@@ -72,7 +74,8 @@ class Builder extends React.Component {
 const mapStateToProps = state => {
   return {
     builderWidth: state.builderWidth,
-    builderHeight: state.builderHeight
+    builderHeight: state.builderHeight,
+    items: state.items,
   };
 };
 
@@ -81,6 +84,7 @@ const mapDispatchToProps = dispatch => {
     onWidthChange: (e) => dispatch({type: 'WIDTH_CHANGE', value: e}),
     onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e}),
     onAddButton: () => dispatch({type: 'ADD_BUTTON'}),
+    onNewSection: () => dispatch({type: 'NEW_SECTION'}),
     // onHeightChange: () => dispatch()
   };
 };
