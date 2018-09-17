@@ -93,6 +93,8 @@ const reducer = (state = initialState, action) => {
     // Drag and drop
     case 'ON_DRAG_END':
 
+      let copyArr = state.test;
+
       const beginParentId = parseInt(action.value.source.droppableId);
       const endParentId = parseInt(action.value.destination.droppableId);
 
@@ -108,42 +110,50 @@ const reducer = (state = initialState, action) => {
         ...state.test[beginParentId].slice(beginChildId + 1)
       ];
 
-      let removedItem = state.test[beginParentId].slice(beginChildId, beginChildId + 1)[0];
+      // remove item from origional position
+      copyArr[beginParentId] = [
+        ...state.test[beginParentId].slice(0, beginChildId),
+        ...state.test[beginParentId].slice(beginChildId + 1)
+      ];
+      console.log(copyArr);
 
+
+      let removedItem = state.test[beginParentId].slice(beginChildId, beginChildId + 1)[0];
       let newArrayB;
+      let arrDiff = false;
       if (beginParentId === endParentId) {
 
         newArrA.splice(endChildId, 0, removedItem)
 
-        return {
-          ...state,
-          // optional 2nd arg in callback is the array index
-          test: state.test.map((content, index) => {
-            if (index === endParentId) {
-              return newArrA
-            }
-
-            return content
-          })
-        }
-
       } else {
-
+        arrDiff = true;
         newArrayB = [...state.test[endParentId].slice()];
         newArrayB.splice(endChildId, 0, removedItem)
+
       }
 
+      // let manipulatedArr =  state.test.map((content, index) => {
+      //   if (index === endParentId) {
+      //     return newArrA
+      //   } else if (arrDiff && index === endParentId) {
+      //     return newArrayB;
+      //   }
+
+      //   return content
+      // })
+
+
+
+      // return {
+      //   ...state,
+      //   test:
+      // }
 
     //   return {
     //     ...state,
     //     test: state.test.map((item, i) => i === endParentId ? [...item, removedItem ] : item)
     //  }
 
-
-
-
-      console.log(newArrA);
-      console.log(newArrayB);
 
 
       // const grab = state.test[beginParentId].slice(beginChildId,beginChildId+1);
