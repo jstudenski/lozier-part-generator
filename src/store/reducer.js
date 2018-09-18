@@ -40,28 +40,7 @@ const initialState = {
     ]]
 };
 
-
-// const insertItem = (array, action) => {
-//   let newArray = array.slice();
-//   newArray.splice(action.index, 0, action.item);
-//   return newArray;
-// }
-// ​
-// const removeItem = (array, action) => {
-//   let newArray = array.slice();
-//   newArray.splice(action.index, 1);
-//   return newArray;
-// }
-
-// function immutablySwapItems(items, firstIndex, secondIndex) {
-//   // Constant reference - we can still modify the array itself
-
-
-//   return results;
-// }
-
 const reducer = (state = initialState, action) => {
-
 
   switch (action.type) {
     case 'HEIGHT_CHANGE':
@@ -92,8 +71,6 @@ const reducer = (state = initialState, action) => {
     // Drag and drop
     case 'ON_DRAG_END':
 
-      let copyArr = state.test;
-
       const beginParentId = parseInt(action.value.source.droppableId);
       const endParentId = parseInt(action.value.destination.droppableId);
 
@@ -103,33 +80,40 @@ const reducer = (state = initialState, action) => {
       const firstArr = state.test[beginParentId];
       const secondArr = state.test[endParentId];
 
-      // remove item from origional position
-      let newArrA = [
-        ...state.test[beginParentId].slice(0, beginChildId),
-        ...state.test[beginParentId].slice(beginChildId + 1)
-      ];
+      const grab = state.test[beginParentId].slice(beginChildId,beginChildId+1)[0];
 
+      // copy current array
+      let copyArr = state.test.slice();
       // remove item from origional position
       copyArr[beginParentId] = [
         ...state.test[beginParentId].slice(0, beginChildId),
         ...state.test[beginParentId].slice(beginChildId + 1)
       ];
-      console.log(copyArr);
+      // add to new position
+      copyArr[endParentId].splice(endChildId, 0, grab)
 
-
-      let removedItem = state.test[beginParentId].slice(beginChildId, beginChildId + 1)[0];
-      let newArrayB;
-      let arrDiff = false;
-      if (beginParentId === endParentId) {
-
-        newArrA.splice(endChildId, 0, removedItem)
-
-      } else {
-        arrDiff = true;
-        newArrayB = [...state.test[endParentId].slice()];
-        newArrayB.splice(endChildId, 0, removedItem)
-
+      return {
+        ...state,
+        test: copyArr,
       }
+
+
+      // let removedItem = state.test[beginParentId].slice(beginChildId, beginChildId + 1)[0];
+      // let newArrayB;
+      // let arrDiff = false;
+      // if (beginParentId === endParentId) {
+      //
+      //   newArrA.splice(endChildId, 0, removedItem)
+      //
+      // } else {
+      //   arrDiff = true;
+      //   newArrayB = [...state.test[endParentId].slice()];
+      //   newArrayB.splice(endChildId, 0, removedItem)
+      //
+      // }
+
+
+
 
       // let manipulatedArr =  state.test.map((content, index) => {
       //   if (index === endParentId) {
