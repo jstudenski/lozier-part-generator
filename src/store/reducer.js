@@ -41,7 +41,6 @@ const initialState = {
 };
 
 
-
 // const insertItem = (array, action) => {
 //   let newArray = array.slice();
 //   newArray.splice(action.index, 0, action.item);
@@ -270,4 +269,3 @@ export default reducer;
 //   console.log(result);
 //  // return result;
 // };
-
