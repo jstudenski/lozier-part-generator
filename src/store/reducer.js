@@ -71,185 +71,35 @@ const reducer = (state = initialState, action) => {
     // Drag and drop
     case 'ON_DRAG_END':
 
-      const beginParentId = parseInt(action.value.source.droppableId);
-      const endParentId = parseInt(action.value.destination.droppableId);
 
-      const beginChildId = action.value.source.index;
-      const endChildId = action.value.destination.index;
+      const { source, destination } = action.value;
+      console.log(destination);
+      const startArrIndex = parseInt(source.droppableId);
+      const startArr = state.test[startArrIndex];
+      const startIndex = source.index;
+      const endGroupIndex = parseInt(destination.droppableId);
+      const endIndex = destination.index;
+      const activeItem = startArr.slice(startIndex,startIndex+1)[0];
 
-      const firstArr = state.test[beginParentId];
-      const secondArr = state.test[endParentId];
-
-      const grab = state.test[beginParentId].slice(beginChildId,beginChildId+1)[0];
-
-      // copy current array
+      // make copy of current array
       let copyArr = state.test.slice();
-      // remove item from origional position
-      copyArr[beginParentId] = [
-        ...state.test[beginParentId].slice(0, beginChildId),
-        ...state.test[beginParentId].slice(beginChildId + 1)
+      // remove item from starting position
+      copyArr[startArrIndex] = [
+        ...startArr.slice(0, startIndex),
+        ...startArr.slice(startIndex + 1)
       ];
-      // add to new position
-      copyArr[endParentId].splice(endChildId, 0, grab)
+      // add active item to new position
+      copyArr[endGroupIndex].splice(endIndex, 0, activeItem)
 
       return {
         ...state,
         test: copyArr,
       }
 
-
-      // let removedItem = state.test[beginParentId].slice(beginChildId, beginChildId + 1)[0];
-      // let newArrayB;
-      // let arrDiff = false;
-      // if (beginParentId === endParentId) {
-      //
-      //   newArrA.splice(endChildId, 0, removedItem)
-      //
-      // } else {
-      //   arrDiff = true;
-      //   newArrayB = [...state.test[endParentId].slice()];
-      //   newArrayB.splice(endChildId, 0, removedItem)
-      //
-      // }
-
-
-
-
-      // let manipulatedArr =  state.test.map((content, index) => {
-      //   if (index === endParentId) {
-      //     return newArrA
-      //   } else if (arrDiff && index === endParentId) {
-      //     return newArrayB;
-      //   }
-
-      //   return content
-      // })
-
-
-
-      // return {
-      //   ...state,
-      //   test:
-      // }
-
-    //   return {
-    //     ...state,
-    //     test: state.test.map((item, i) => i === endParentId ? [...item, removedItem ] : item)
-    //  }
-
-
-
-      // const grab = state.test[beginParentId].slice(beginChildId,beginChildId+1);
-
-      // console.log(action.value);
-
-      // let newArray = state.test[beginParentId].slice();
-
-      // newArray.splice(beginChildId, 1);
-
-      // if (beginParentId === endParentId) {
-      // // moved in same array
-      //   newArray.splice(endChildId, 0, state.test[beginParentId].slice());
-      // } else {
-      //   let newArrayB = state.test[endParentId].slice();
-
-      // }
-
-
-
-     // console.log(state.test[beginParentId].slice(beginChildId, beginChildId + 1)[0]);
-
-      // let testAdd = [...state.test[endParentId].slice()];
-      // testAdd.splice(endChildId, 0, state.test[beginParentId].slice(0, beginChildId));
-
-      // console.log(testAdd);
-
-    //  // let newArrayB = (state.test[beginParentId] === state.test[endParentId]) ? newArray
-    //   let newArrayB = state.test[endParentId].slice();
-    //   newArrayB.splice(action.value.destination.index, 0, state.test[beginParentId][beginChildId]);
-
-    //  const result = Array.from(list);
-    // const [removed] = result.splice(startIndex, 1);
-    // result.splice(endIndex, 0, removed);
-
-    // console.log(result);
-
-
-      // // insertItem
-      // let newArray = state.test[beginParentId].slice();
-      // newArray.splice(action.value.source.index, 0, state.test[beginParentId][beginChildId]);
-      // console.log(newArray);
-
-
-      // const firstItem = state.test[0][beginChildId];
-      // results[beginChildId] = state.test[0][endChildId];
-      // results[endChildId] = firstItem;
-
-    //    console.log(results);
-
-      // console.log(results);
-      // return {
-      //   ...state,
-      //   test: [...state.test, [...state.test[0], results]]
-      // }
-
-      // return {
-      //   ...state,
-      //   // optional 2nd arg in callback is the array index
-      //   test: state.test.map((content, index) => {
-      //     if (index === action.meta.index) {
-      //       return action.data
-      //     }
-
-      //     return content
-      //   })
-      // }
-
-      // return {
-      //   ...state,
-      //   items: [...state.items.slice(0, last), [...state.items[last], temp]]
-      // }
-        // return [
-        //   ...state,
-        //   items: [...state.items.slice(0, 3), []] // ,
-        //   // ...array.slice(3 + 1)
-        // ];
-
-
-
-      // function removeItem(array, action) {
-      //   return array.filter( (item, index) => index !== action.index);
-      // }
-
-      // console.log();
-      // console.log();
-      // console.log(beginId);
-      // console.log(endId);
-      // return {
-      //  // ...state,
-      //   ...test[0].slice(action.value.source.index) // remove
-      // }
     default:
       return state
   }
 
-
 };
 
-
-
-
 export default reducer;
-
-
-// // a little function to help us with reordering the result
-// const reorder = (list, startIndex, endIndex) => {
-//   console.log(list, startIndex, endIndex)
-
-//   const result = Array.from(list);
-//   const [removed] = result.splice(startIndex, 1);
-//   result.splice(endIndex, 0, removed);
-
-//   console.log(result);
-//  // return result;
-// };
