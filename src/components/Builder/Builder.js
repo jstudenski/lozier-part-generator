@@ -34,7 +34,7 @@ class Builder extends React.Component {
       <div className="builder">
         <Slider
           vertical={true}
-          disabled={(this.props.items[this.props.items.length-1].length != 0) ? true : false }
+          disabled={(this.props.fixtures[this.props.fixtures.length-1].length != 0) ? true : false }
           min={36}
           max={120}
           step={6}
@@ -75,7 +75,7 @@ const mapStateToProps = state => {
   return {
     builderWidth: state.builderWidth,
     builderHeight: state.builderHeight,
-    items: state.items,
+    fixtures: state.fixtures,
   };
 };
 

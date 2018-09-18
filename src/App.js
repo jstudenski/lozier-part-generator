@@ -17,7 +17,7 @@ class App extends Component {
           <Builder />
         </div>
         <div className="row">
-          <Diagram />
+          {/* <Diagram /> */}
         </div>
         <div className="row">
           <Test></Test>

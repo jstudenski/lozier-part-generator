@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <DragDropContext onDragEnd={this.props.onDragEnd}>
-        {this.props.test.map((itemA, indexA) => (
+        {this.props.fixtures.map((itemA, indexA) => (
           <Droppable
             direction="horizontal"
             droppableId={`${indexA}`}
@@ -48,7 +48,7 @@ class App extends Component {
                 {itemA.map((itemB, indexB) => (
                   <Draggable
                     key={itemB.id}
-                    draggableId={itemB.id}
+                    draggableId={indexA+':'+indexB}
                     index={indexB}>
                     {(provided, snapshot) => (
                       <div
@@ -62,13 +62,7 @@ class App extends Component {
                           itemB
                           // testStyle(itemB),
                         )}>
-                        {/* <Fixture
-                        value={{
-                          width: 48,
-                          height: 36,
-                        }}> */}
-                          {itemB.id}
-                        {/* </Fixture> */}
+                          {itemB.width} x {itemB.height}
                       </div>
                     )}
                   </Draggable>
@@ -86,8 +80,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    test: state.test,
-    items: state.items,
+    fixtures: state.fixtures,
   };
 };
 

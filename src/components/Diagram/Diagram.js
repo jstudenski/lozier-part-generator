@@ -6,7 +6,7 @@ class Diagram extends React.Component {
   render() {
     return (
       <div>
-        {this.props.items.map((value, index) => (
+        {this.props.fixtures.map((value, index) => (
           <Group
             axis={'x'}
             lockAxis={'x'}
@@ -22,7 +22,7 @@ class Diagram extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.items,
+    fixtures: state.fixtures,
   };
 };
 
