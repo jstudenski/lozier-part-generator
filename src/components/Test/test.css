@@ -11,6 +11,8 @@
 }
 
 .del-btn {
+  color: #F44336;
+  background-color: transparent;
   position: absolute;
   left: 0;
   top: 0;
@@ -24,4 +26,5 @@
 
 .del-btn:hover {
   background-color: #F44336;
+  color: #000;
 }

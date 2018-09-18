@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
-import Fixture from '../Fixture';
+// import Fixture from '../Fixture';
 import './test.css';
 
 const grid = 8;
@@ -23,14 +22,12 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'lightblue' : 'lightgrey',
-  margin: 8,
+  margin: '8px 8px -4px 8px',
   display: 'inline-block',
   width: 'max-content',
-});
-
-const testStyle = itemB => ({
-    height: itemB.height,
-    width: itemB.width,
+  minWidth: 48 * 2,
+  minHeight: 36 * 2,
+  position: 'relative',
 });
 
 class App extends Component {
@@ -39,6 +36,7 @@ class App extends Component {
       <DragDropContext onDragEnd={this.props.onDragEnd}>
         {this.props.fixtures.map((itemA, indexA) => (
           <Droppable
+            key={indexA}
             direction="horizontal"
             droppableId={`${indexA}`}
           >
@@ -46,10 +44,11 @@ class App extends Component {
               <div
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}>
+                <button className="del-btn" onClick={() => this.props.deleteSection(indexA)}>&#215;</button>
                 {itemA.map((itemB, indexB) => (
                   <Draggable
-                    key={itemB.id}
-                    draggableId={indexA+':'+indexB}
+                    key={indexA+''+indexB}
+                    draggableId={indexA+''+indexB}
                     index={indexB}>
                     {(provided, snapshot) => (
                       <div
@@ -61,7 +60,6 @@ class App extends Component {
                           snapshot.isDragging,
                           provided.draggableProps.style,
                           itemB
-                          // testStyle(itemB),
                         )}>
                         <button className="del-btn" onClick={() => this.props.deleteFixture([indexA, indexB])}>&#215;</button>
                           {itemB.width} x {itemB.height}
@@ -90,6 +88,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onDragEnd: (e) => dispatch({type: 'ON_DRAG_END', value: e}),
     deleteFixture: (e) => dispatch({type: 'DELETE_FIXTURE', value: e}),
+    deleteSection: (e) => dispatch({type: 'DELETE_SECTION', value: e}),
   };
 };
 

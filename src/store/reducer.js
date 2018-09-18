@@ -20,11 +20,14 @@ const initialState = {
       {width: 48, height: 48},
       {width: 48, height: 48},
       {width: 48, height: 48}
-    ]]
+    ],[]]
 };
 
 const reducer = (state = initialState, action) => {
-
+  const temp = {
+    width: state.builderWidth,
+    height: state.builderHeight,
+  }
   switch (action.type) {
     case 'HEIGHT_CHANGE':
       return {
@@ -37,10 +40,7 @@ const reducer = (state = initialState, action) => {
         builderWidth: action.value,
       }
     case 'ADD_BUTTON':
-      const temp = {
-        width: state.builderWidth,
-        height: state.builderHeight,
-      }
+
       const last = state.fixtures.length-1;
       return {
         ...state,
@@ -51,10 +51,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         fixtures: [...state.fixtures, []]
       }
+    case 'DELETE_SECTION':
+
+      const newDelSecArr = [
+        ...state.fixtures.slice(0, action.value),
+        ...state.fixtures.slice(action.value + 1)
+      ]
+      return {
+        ...state,
+        fixtures: newDelSecArr,
+      }
+
     case 'DELETE_FIXTURE':
       const [indexA, indexB] = [action.value[0], action.value[1]];
       const newArr = [
-        ...state.fixtures[indexA].slice(0, action.value[1]),
+        ...state.fixtures[indexA].slice(0, indexB),
         ...state.fixtures[indexA].slice(indexB + 1)
       ]
 
@@ -75,8 +86,12 @@ const reducer = (state = initialState, action) => {
       const endIndex = destination.index;
       const activeItem = startArr.slice(startIndex,startIndex+1)[0];
 
+
       // if the heights don't match
-      if (state.fixtures[startArrIndex][0].height != state.fixtures[endArrIndex][0].height) return state;
+     const endZone = Object.is(state.fixtures[endArrIndex][0], undefined) ? state.fixtures[startArrIndex][0].height : state.fixtures[endArrIndex][0].height;
+
+    //   console.log(typeof state.fixtures[endArrIndex][0].height)
+      if (state.fixtures[startArrIndex][0].height !== endZone) return state;
 
       // make copy of current array
       let copyArr = state.fixtures.slice();

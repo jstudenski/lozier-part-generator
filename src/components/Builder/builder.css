@@ -12,3 +12,24 @@
   padding: 25px 0px 36px 5px;
   border-radius: 5px;
 }
+
+.Fixture {
+  margin-bottom: -4px;
+  display: inline-block;
+}
+
+.builder-item {
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+}
+
+.Fixture, .builder-item {
+  font-size: .9em;
+  color: #000000;
+  background-color: #e0e0e0;
+  border: 1px solid #9E9E9E;
+  box-sizing: border-box;
+  padding-top: 10px;
+  overflow: hidden;
+}

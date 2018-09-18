@@ -4,7 +4,7 @@ import './normalize.css';
 import 'rc-slider/assets/index.css';
 import Test from './components/Test';
 import Builder from './components/Builder';
-import Diagram from './components/Diagram';
+// import Diagram from './components/Diagram';
 
 class App extends Component {
   render() {
