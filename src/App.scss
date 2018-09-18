@@ -1,23 +1,31 @@
 button {
-  outline: 0; }
+  outline: 0;
+}
+
+$red: #F44336;
 
 .App-header {
   background-color: #222;
   height: 46px;
   box-sizing: border-box;
   padding: 0px;
-  color: white; }
+  color: white;
+}
 
 .App-title {
   font-size: 1em;
   float: left;
-  padding-left: 25px; }
+  padding-left: 25px;
+}
 
 .row {
-  padding: 30px; }
+  padding: 30px;
+}
 
 .row:nth-child(even) {
-  background: #f1f1f1; }
+  background: #f1f1f1;
+}
+
 
 .test {
   margin-bottom: -4px;
@@ -28,10 +36,11 @@ button {
   box-sizing: border-box;
   padding-top: 10px;
   overflow: hidden;
-  display: inline-block; }
+  display: inline-block;
+}
 
 .del-btn {
-  color: #F44336;
+  color: $red;
   background-color: transparent;
   position: absolute;
   left: 0;
@@ -41,10 +50,14 @@ button {
   height: 20px;
   font-size: 20px;
   border-radius: 10px;
-  margin: 2px; }
-  .del-btn:hover {
-    background-color: #F44336;
-    color: #000; }
+  margin: 2px;
+  &:hover {
+    background-color: $red;
+    color: #000;
+  }
+}
+
+
 
 .builder {
   background-color: #ffffff;
@@ -53,7 +66,8 @@ button {
   width: 96px;
   height: 240px;
   top: 25px;
-  left: 27px; }
+  left: 27px;
+}
 
 .builder-container {
   background-color: #fff;
@@ -62,7 +76,8 @@ button {
   border-radius: 5px;
   overflow: hidden;
   height: 310px;
-  position: relative; }
+  position: relative;
+}
 
 .builder-diagram {
   float: left;
@@ -70,17 +85,20 @@ button {
   height: 310px;
   background-color: #d6d6d6;
   display: inline-block;
-  position: relative; }
+  position: relative;
+}
 
 .Fixture {
   margin-bottom: -4px;
-  display: inline-block; }
+  display: inline-block;
+}
 
 .builder-item {
   text-align: center;
   bottom: 0px;
   left: 0px;
-  position: absolute; }
+  position: absolute;
+}
 
 .Fixture, .builder-item {
   font-size: .9em;
@@ -89,7 +107,8 @@ button {
   border: 1px solid #9E9E9E;
   box-sizing: border-box;
   padding-top: 10px;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .add-btn {
   background-color: aquamarine;
@@ -99,15 +118,22 @@ button {
   border-radius: 4px;
   border: none;
   position: absolute;
-  font-size: 14px; }
+  font-size: 14px;
+}
 
 .first {
   right: 15px;
-  bottom: 15px; }
+  bottom: 15px;
+}
 
 .second {
   right: 15px;
-  bottom: 90px; }
+  bottom: 90px;
+}
 
 .add-btn:hover {
-  background-color: #55deb0; }
+  background-color: #55deb0;
+}
+
+
+

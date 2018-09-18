@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 // import Fixture from '../Fixture';
-import './test.css';
 
 const grid = 8;
 
@@ -13,7 +12,7 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   width: itemB.width * 2,
   height: itemB.height * 2,
   // change background colour if dragging
-  background: isDragging ? 'lightgreen' : 'grey',
+  background: isDragging ? 'salmon' : 'grey',
   textAlign: 'center',
   position: 'relative',
   // styles we need to apply on draggables
@@ -21,7 +20,7 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  background: isDraggingOver ? 'aquamarine' : 'lightgrey',
   margin: '8px 8px -4px 8px',
   display: 'inline-block',
   width: 'max-content',
