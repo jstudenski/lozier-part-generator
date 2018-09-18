@@ -20,23 +20,23 @@ const initialState = {
   ],
   test: [
     [
-      {id: "item-0", content: "item 0"},
-      {id: "item-1", content: "item 1"},
-      {id: "item-2", content: "item 2"},
-      {id: "item-3", content: "item 3"},
-      {id: "item-4", content: "item 4"},
-      {id: "item-5", content: "item 5"},
-      {id: "item-6", content: "item 6"},
-      {id: "item-7", content: "item 7"},
-      {id: "item-8", content: "item 8"},
-      {id: "item-9", content: "item 9"}
+      {id: "item-0", width: 48, height: 36},
+      {id: "item-1", width: 48, height: 36},
+      {id: "item-2", width: 48, height: 36},
+      {id: "item-3", width: 48, height: 36}
+    ],[
+      {id: "item-4", width: 48, height: 36},
+      {id: "item-5", width: 48, height: 36},
+      {id: "item-6", width: 48, height: 36},
+      {id: "item-7", width: 48, height: 36},
+      {id: "item-8", width: 48, height: 36},
+      {id: "item-9", width: 48, height: 36}
     ],
     [
-      {id: "item-10", content: "item 10"},
-      {id: "item-11", content: "item 11"},
-      {id: "item-12", content: "item 12"},
-      {id: "item-13", content: "item 13"},
-      {id: "item-14", content: "item 14"}
+      {id: "item-10", width: 48, height: 120},
+      {id: "item-11", width: 48, height: 120},
+      {id: "item-12", width: 48, height: 120},
+      {id: "item-13", width: 48, height: 120}
     ]]
 };
 

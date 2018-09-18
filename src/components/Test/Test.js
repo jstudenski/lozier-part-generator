@@ -7,11 +7,12 @@ import './test.css';
 
 const grid = 8;
 
-const getItemStyle = (isDragging, draggableStyle) => ({
+const getItemStyle = (isDragging, draggableStyle, itemB) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     padding: grid * 2,
-
+    width: itemB.width * 2,
+    height: itemB.height * 2,
     // change background colour if dragging
     background: isDragging ? 'lightgreen' : 'grey',
 
@@ -21,8 +22,14 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
-    padding: grid,
-    // width: 250
+    margin: 8,
+    display: 'inline-block',
+    width: 'max-content',
+});
+
+const testStyle = itemB => ({
+    height: itemB.height,
+    width: itemB.width,
 });
 
 class App extends Component {
@@ -30,7 +37,10 @@ class App extends Component {
     return (
       <DragDropContext onDragEnd={this.props.onDragEnd}>
         {this.props.test.map((itemA, indexA) => (
-          <Droppable direction="horizontal" droppableId={`${indexA}`}>
+          <Droppable
+            direction="horizontal"
+            droppableId={`${indexA}`}
+          >
             {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
@@ -42,20 +52,22 @@ class App extends Component {
                     index={indexB}>
                     {(provided, snapshot) => (
                       <div
-                      className='test'
+                        className='test'
                         ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
                         style={getItemStyle(
                           snapshot.isDragging,
-                          provided.draggableProps.style
+                          provided.draggableProps.style,
+                          itemB
+                          // testStyle(itemB),
                         )}>
                         {/* <Fixture
                         value={{
                           width: 48,
                           height: 36,
                         }}> */}
-                          {itemB.content}
+                          {itemB.id}
                         {/* </Fixture> */}
                       </div>
                     )}

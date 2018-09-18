@@ -2,6 +2,7 @@ import React from 'react';
 import './fixture.css'
 import { SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 const Fixture = SortableElement(({value}) =>
   <div
