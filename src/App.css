@@ -72,17 +72,11 @@ button {
   display: inline-block;
   position: relative; }
 
-.Fixture {
-  margin-bottom: -4px;
-  display: inline-block; }
-
 .builder-item {
   text-align: center;
   bottom: 0px;
   left: 0px;
-  position: absolute; }
-
-.Fixture, .builder-item {
+  position: absolute;
   font-size: .9em;
   color: #000000;
   background-color: #e0e0e0;

@@ -13,6 +13,8 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   height: itemB.height * 2,
   // change background colour if dragging
   background: isDragging ? 'salmon' : 'grey',
+  boxShadow: isDragging ? '1px 1px 4px grey' : null ,
+
   textAlign: 'center',
   position: 'relative',
   // styles we need to apply on draggables

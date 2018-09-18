@@ -2,6 +2,7 @@ button {
   outline: 0;
 }
 
+$accent: yellow;
 $red: #F44336;
 
 .App-header {
@@ -88,19 +89,16 @@ $red: #F44336;
   position: relative;
 }
 
-.Fixture {
-  margin-bottom: -4px;
-  display: inline-block;
-}
+// .Fixture {
+//   margin-bottom: -4px;
+//   display: inline-block;
+// }
 
 .builder-item {
   text-align: center;
   bottom: 0px;
   left: 0px;
   position: absolute;
-}
-
-.Fixture, .builder-item {
   font-size: .9em;
   color: #000000;
   background-color: #e0e0e0;
