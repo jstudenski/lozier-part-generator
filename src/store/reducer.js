@@ -70,10 +70,10 @@ const reducer = (state = initialState, action) => {
       }
     // Drag and drop
     case 'ON_DRAG_END':
-
-
       const { source, destination } = action.value;
-      console.log(destination);
+      // dragged outside zone
+      if (destination === null) return state;
+
       const startArrIndex = parseInt(source.droppableId);
       const startArr = state.test[startArrIndex];
       const startIndex = source.index;
