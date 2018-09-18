@@ -1,23 +1,6 @@
 const initialState = {
   builderWidth: 48,
-  builderHeight: 72,
-  // items:[
-  //   [{
-  //     width: 48,
-  //     height: 36,
-  //   },
-  //   {
-  //     width: 48,
-  //     height: 114,
-  //   }],[{
-  //     width: 48,
-  //     height: 120,
-  //   },
-  //   {
-  //     width: 48,
-  //     height: 120,
-  //   }],
-  // ],
+  builderHeight: 48,
   fixtures: [
     [
       {width: 48, height: 36},
@@ -33,10 +16,10 @@ const initialState = {
       {width: 24, height: 36}
     ],
     [
-      {width: 48, height: 120},
-      {width: 48, height: 120},
-      {width: 48, height: 120},
-      {width: 48, height: 120}
+      {width: 48, height: 48},
+      {width: 48, height: 48},
+      {width: 48, height: 48},
+      {width: 48, height: 48}
     ]]
 };
 
@@ -68,7 +51,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         fixtures: [...state.fixtures, []]
       }
-    // Drag and drop
+    case 'DELETE_FIXTURE':
+      const [indexA, indexB] = [action.value[0], action.value[1]];
+      const newArr = [
+        ...state.fixtures[indexA].slice(0, action.value[1]),
+        ...state.fixtures[indexA].slice(indexB + 1)
+      ]
+
+      return {
+        ...state,
+        fixtures: state.fixtures.map((currentArr, currentIndex) => indexA === currentIndex ? newArr : currentArr)
+      }
+
     case 'ON_DRAG_END':
       const { source, destination } = action.value;
       // dragged outside zone

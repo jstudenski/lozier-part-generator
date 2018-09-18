@@ -15,7 +15,7 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
     height: itemB.height * 2,
     // change background colour if dragging
     background: isDragging ? 'lightgreen' : 'grey',
-
+    textAlign: 'center',
     // styles we need to apply on draggables
     ...draggableStyle
 });
@@ -62,6 +62,7 @@ class App extends Component {
                           itemB
                           // testStyle(itemB),
                         )}>
+                        <button onClick={() => this.props.deleteFixture([indexA, indexB])}>x</button>
                           {itemB.width} x {itemB.height}
                       </div>
                     )}
@@ -87,6 +88,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onDragEnd: (e) => dispatch({type: 'ON_DRAG_END', value: e}),
+    deleteFixture: (e) => dispatch({type: 'DELETE_FIXTURE', value: e}),
   };
 };
 
