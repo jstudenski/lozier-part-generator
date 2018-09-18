@@ -8,23 +8,24 @@ import './test.css';
 const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle, itemB) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: 'none',
-    padding: grid * 2,
-    width: itemB.width * 2,
-    height: itemB.height * 2,
-    // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
-    textAlign: 'center',
-    // styles we need to apply on draggables
-    ...draggableStyle
+  // some basic styles to make the items look a bit nicer
+  userSelect: 'none',
+  padding: grid * 2,
+  width: itemB.width * 2,
+  height: itemB.height * 2,
+  // change background colour if dragging
+  background: isDragging ? 'lightgreen' : 'grey',
+  textAlign: 'center',
+  position: 'relative',
+  // styles we need to apply on draggables
+  ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
-    margin: 8,
-    display: 'inline-block',
-    width: 'max-content',
+  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  margin: 8,
+  display: 'inline-block',
+  width: 'max-content',
 });
 
 const testStyle = itemB => ({
@@ -62,7 +63,7 @@ class App extends Component {
                           itemB
                           // testStyle(itemB),
                         )}>
-                        <button onClick={() => this.props.deleteFixture([indexA, indexB])}>x</button>
+                        <button className="del-btn" onClick={() => this.props.deleteFixture([indexA, indexB])}>&#215;</button>
                           {itemB.width} x {itemB.height}
                       </div>
                     )}
