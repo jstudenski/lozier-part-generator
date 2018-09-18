@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
+import Fixture from '../Fixture';
+import './test.css';
 
 const grid = 8;
 
@@ -9,7 +11,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     padding: grid * 2,
-    margin: `0 0 ${grid}px 0`,
 
     // change background colour if dragging
     background: isDragging ? 'lightgreen' : 'grey',
@@ -21,7 +22,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
     padding: grid,
-    width: 250
+    // width: 250
 });
 
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
     return (
       <DragDropContext onDragEnd={this.props.onDragEnd}>
         {this.props.test.map((itemA, indexA) => (
-          <Droppable droppableId={`${indexA}`}>
+          <Droppable direction="horizontal" droppableId={`${indexA}`}>
             {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
@@ -41,6 +42,7 @@ class App extends Component {
                     index={indexB}>
                     {(provided, snapshot) => (
                       <div
+                      className='test'
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
@@ -48,7 +50,13 @@ class App extends Component {
                           snapshot.isDragging,
                           provided.draggableProps.style
                         )}>
-                        {itemB.content}
+                        {/* <Fixture
+                        value={{
+                          width: 48,
+                          height: 36,
+                        }}> */}
+                          {itemB.content}
+                        {/* </Fixture> */}
                       </div>
                     )}
                   </Draggable>
@@ -66,15 +74,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    test: state.test
+    test: state.test,
+    items: state.items,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onDragEnd: (e) => dispatch({type: 'ON_DRAG_END', value: e}),
-    // onHeightChange: (e) => dispatch({type: 'HEIGHT_CHANGE', value: e}),
-    // onAddButton: () => dispatch({type: 'ADD_BUTTON'}),
   };
 };
 

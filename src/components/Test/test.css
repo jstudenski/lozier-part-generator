@@ -1,3 +1,10 @@
-.droppable {
-  background-color: pink;
+.test {
+  font-size: .9em;
+  color: #000000;
+  background-color: #e0e0e0;
+  border: 1px solid #9E9E9E;
+  box-sizing: border-box;
+  padding-top: 10px;
+  overflow: hidden;
+  display: inline-block;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './fixture.css'
 import { SortableElement } from 'react-sortable-hoc';
+import PropTypes from 'prop-types';
 
 const Fixture = SortableElement(({value}) =>
   <div
@@ -13,9 +14,10 @@ const Fixture = SortableElement(({value}) =>
   </div>
 );
 
-Fixture.propTypes = {
-  // title: PropTypes.string.isRequired,
-};
+// Fixture.propTypes = {
+//   width: PropTypes.number.isRequired,
+//   height: PropTypes.number.isRequired,
+// };
 
 Fixture.defaultProps = {
   // title: 'Hello World',
