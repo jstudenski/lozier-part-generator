@@ -5,21 +5,19 @@ const initialState = {
     [
       {width: 48, height: 36},
       {width: 48, height: 36},
-      {width: 48, height: 36},
-      {width: 48, height: 36}
+      // {width: 48, height: 36},
+      // {width: 48, height: 36}
     ],[
       {width: 48, height: 36},
       {width: 48, height: 36},
-      {width: 48, height: 36},
-      {width: 48, height: 36},
-      {width: 24, height: 36},
-      {width: 24, height: 36}
+      // {width: 48, height: 36},
+      // {width: 48, height: 36},
+      // {width: 24, height: 36},
+      // {width: 24, height: 36}
     ],
     [
       {width: 48, height: 48},
-      {width: 48, height: 48},
-      {width: 48, height: 48},
-      {width: 48, height: 48}
+      // {width: 48, height: 48},
     ],[]]
 };
 
@@ -57,8 +55,15 @@ const reducer = (state = initialState, action) => {
         ...state.fixtures.slice(0, action.value),
         ...state.fixtures.slice(action.value + 1)
       ]
+      // one section minimum
+      if (newDelSecArr.length === 0) return state;
+      // set builder height to 48 if there is no ficture
+      const builderHeight = Object.is(newDelSecArr[newDelSecArr.length-1][0], undefined) ? 48 : newDelSecArr[newDelSecArr.length-1][0].height;
+
+      console.log();
       return {
         ...state,
+        builderHeight: builderHeight,
         fixtures: newDelSecArr,
       }
 
