@@ -39,6 +39,20 @@ $red: #F44336;
   padding-top: 10px;
   overflow: hidden;
   display: inline-block;
+
+  &:hover {
+    .delete-btn svg {
+      display: inline;
+    }
+  }
+}
+
+.droppable-group {
+  &:hover {
+    .delete-btn svg {
+      display: inline;
+    }
+  }
 }
 
 .builder {

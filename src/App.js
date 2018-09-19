@@ -4,6 +4,7 @@ import './normalize.css';
 import 'rc-slider/assets/index.css';
 import Test from './components/Test';
 import Builder from './components/Builder';
+import Parts from './components/Parts';
 // import Diagram from './components/Diagram';
 
 class App extends Component {
@@ -18,6 +19,9 @@ class App extends Component {
         </div>
         <div className="row">
           <Test></Test>
+        </div>
+        <div className="row">
+          <Parts />
         </div>
       </div>
     );

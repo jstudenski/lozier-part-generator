@@ -3,12 +3,10 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 // import Fixture from '../Fixture';
 import DeleteButton from '../DeleteButton';
-const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: 'none',
-  padding: grid * 2,
   width: itemB.width * 2,
   height: itemB.height * 2,
   // change background colour if dragging
@@ -44,7 +42,8 @@ class App extends Component {
             {(provided, snapshot) => (
               <div
                 ref={provided.innerRef}
-                style={getListStyle(snapshot.isDraggingOver)}>
+                style={getListStyle(snapshot.isDraggingOver)}
+                className='droppable-group'>
                 <DeleteButton click={() => this.props.deleteSection(indexA)} />
                 {itemA.map((itemB, indexB) => (
                   <Draggable

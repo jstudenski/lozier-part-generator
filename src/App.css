@@ -30,6 +30,11 @@ button {
   padding-top: 10px;
   overflow: hidden;
   display: inline-block; }
+  .test:hover .delete-btn svg {
+    display: inline; }
+
+.droppable-group:hover .delete-btn svg {
+  display: inline; }
 
 .builder {
   background-color: #ffffff;
