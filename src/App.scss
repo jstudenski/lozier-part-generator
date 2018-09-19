@@ -1,5 +1,6 @@
 button {
   outline: 0;
+  border: none;
 }
 
 $accent: yellow;
@@ -39,26 +40,6 @@ $red: #F44336;
   overflow: hidden;
   display: inline-block;
 }
-
-.del-btn {
-  color: $red;
-  background-color: transparent;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border: none;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
-  border-radius: 10px;
-  margin: 2px;
-  &:hover {
-    background-color: $red;
-    color: #000;
-  }
-}
-
-
 
 .builder {
   background-color: #ffffff;

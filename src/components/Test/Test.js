@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 // import Fixture from '../Fixture';
-
+import DeleteButton from '../DeleteButton';
 const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle, itemB) => ({
@@ -45,7 +45,7 @@ class App extends Component {
               <div
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}>
-                <button className="del-btn" onClick={() => this.props.deleteSection(indexA)}>&#215;</button>
+                <DeleteButton click={() => this.props.deleteSection(indexA)} />
                 {itemA.map((itemB, indexB) => (
                   <Draggable
                     key={indexA+''+indexB}
@@ -62,7 +62,7 @@ class App extends Component {
                           provided.draggableProps.style,
                           itemB
                         )}>
-                        <button className="del-btn" onClick={() => this.props.deleteFixture([indexA, indexB])}>&#215;</button>
+                        <DeleteButton click={() => this.props.deleteFixture([indexA, indexB])} />
                           {itemB.width} x {itemB.height}
                       </div>
                     )}

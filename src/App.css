@@ -1,5 +1,6 @@
 button {
-  outline: 0; }
+  outline: 0;
+  border: none; }
 
 .App-header {
   background-color: #222;
@@ -29,22 +30,6 @@ button {
   padding-top: 10px;
   overflow: hidden;
   display: inline-block; }
-
-.del-btn {
-  color: #F44336;
-  background-color: transparent;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border: none;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
-  border-radius: 10px;
-  margin: 2px; }
-  .del-btn:hover {
-    background-color: #F44336;
-    color: #000; }
 
 .builder {
   background-color: #ffffff;
