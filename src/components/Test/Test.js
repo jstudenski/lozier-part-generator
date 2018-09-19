@@ -46,6 +46,8 @@ class App extends Component {
                 className='droppable-group'>
                 <DeleteButton click={() => this.props.deleteSection(indexA)} />
                 {itemA.map((itemB, indexB) => (
+                  <div class="uprite-container">
+                  {/* <div class="uprite">*</div> */}
                   <Draggable
                     key={indexA+''+indexB}
                     draggableId={indexA+''+indexB}
@@ -66,7 +68,9 @@ class App extends Component {
                       </div>
                     )}
                   </Draggable>
+                  </div>
                 ))}
+                {/* <div class="uprite">*</div> */}
                 {provided.placeholder}
               </div>
             )}

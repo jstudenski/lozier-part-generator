@@ -14,6 +14,16 @@ button {
   float: left;
   padding-left: 25px; }
 
+.uprite-container {
+  display: inline-block;
+  background-color: #F44336; }
+
+.uprite {
+  display: inline-block;
+  width: 10px;
+  background-color: #3ff53f;
+  height: 100%; }
+
 .row {
   padding: 30px; }
 
