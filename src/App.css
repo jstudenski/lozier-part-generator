@@ -120,8 +120,7 @@ button {
   box-sizing: border-box;
   left: 25px;
   bottom: -25px;
-  z-index: 1;
-  opacity: .7; }
+  z-index: 0; }
 
 .box::before {
   content: '';
@@ -143,5 +142,4 @@ button {
   height: 25px;
   background: salmon;
   transform-origin: bottom left;
-  transform: skewX(45deg);
-  z-index: 2; }
+  transform: skewX(45deg); }

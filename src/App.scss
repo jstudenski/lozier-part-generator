@@ -151,44 +151,46 @@ $red: #F44336;
 
 
 
+$angle-A: 90;
+$angle-B: 45; // angle
+$angle-C: $angle-A - $angle-B;
+
+$side-c: 25; // depth
+
+
 .box {
   position: absolute;
   width: 100%;
   height: 20px;
   background: lime;
   box-sizing: border-box;
-  left: 25px;
-  bottom: -25px;
-  z-index: 1;
-  opacity: .7;
-
+  left: $side-c + px;
+  bottom: (-$side-c) + px;
+  z-index: 0;
+//  opacity: .7;
 }
 
-$angle: 45; // -7 7
-$angle2: 90-$angle;
-$depth: 25;
 
 .box::before {
   content: '';
   position: absolute;
   top: 0;
-  left: (-$depth) + px;
-  width: $depth + px;
+  left: (-$side-c) + px;
+  width: $side-c + px;
   height: 100%;
   background: pink;
   transform-origin: right bottom;
-  transform: skewY($angle+deg);
+  transform: skewY($angle-C+deg);
 }
 
 .box::after {
   content: '';
   position: absolute;
-  top: (-$depth) + px;
+  top: (-$side-c) + px;
   left: 0;
   width: 100%;
-  height: $depth + px;
+  height: $side-c + px;
   background: salmon;
   transform-origin: bottom left;
-  transform: skewX($angle2+deg);
-  z-index: 2;
+  transform: skewX($angle-B+deg);
 }
