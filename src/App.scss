@@ -41,6 +41,10 @@ $red: #F44336;
   background: #f1f1f1;
 }
 
+.rc-slider-tooltip {
+  z-index: 1;
+}
+
 .rc-slider-mark-text {
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -52,8 +56,8 @@ $red: #F44336;
   background-color: #e0e0e0;
   border: 1px solid #9E9E9E;
   box-sizing: border-box;
-  padding-top: 10px;
-  overflow: hidden;
+  padding-top: 25px;
+//   overflow: hidden;
   display: inline-block;
 
   &:hover {
@@ -146,3 +150,45 @@ $red: #F44336;
 
 
 
+
+.box {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  background: lime;
+  box-sizing: border-box;
+  left: 25px;
+  bottom: -25px;
+  z-index: 1;
+  opacity: .7;
+
+}
+
+$angle: 45; // -7 7
+$angle2: 90-$angle;
+$depth: 25;
+
+.box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: (-$depth) + px;
+  width: $depth + px;
+  height: 100%;
+  background: pink;
+  transform-origin: right bottom;
+  transform: skewY($angle+deg);
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  top: (-$depth) + px;
+  left: 0;
+  width: 100%;
+  height: $depth + px;
+  background: salmon;
+  transform-origin: bottom left;
+  transform: skewX($angle2+deg);
+  z-index: 2;
+}

@@ -1,6 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
+
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+const Handle = Slider.Handle;
+
+const handle = (props) => {
+  const { value, dragging, index, ...restProps } = props;
+  return (
+    <Tooltip
+      prefixCls="rc-slider-tooltip"
+      overlay={value}
+      visible={dragging}
+      placement="right"
+      key={index}
+    >
+      <Handle value={value} {...restProps} />
+    </Tooltip>
+  );
+};
+
 
 class Builder extends React.Component {
 
@@ -29,6 +50,7 @@ class Builder extends React.Component {
     };
 
     return (
+      <div>
       <div className="builder-container">
         <div className="builder-diagram">
           <div className="builder">
@@ -39,6 +61,7 @@ class Builder extends React.Component {
               max={120}
               step={6}
               dots={true}
+              handle={handle}
               marks={verticalMarks}
               value={this.props.builderHeight}
               onChange={this.props.onHeightChange}
@@ -68,6 +91,7 @@ class Builder extends React.Component {
       <button onClick={this.props.onAddButton} className="add-btn first">Add Fixture</button>
       <button onClick={this.props.onNewSection} className="add-btn second">New Section</button>
     </div>
+  </div>
     )
   }
 }

@@ -11,8 +11,11 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   height: itemB.height * 2,
   // change background colour if dragging
   background: isDragging ? 'salmon' : 'grey',
+  borderLeftColor: '#fff',
+  borderRightColor: '#fff',
+  borderWidth: '0 1px',
   boxShadow: isDragging ? '1px 1px 4px grey' : null ,
-
+  fontFamily: 'Roboto Condensed',
   textAlign: 'center',
   position: 'relative',
   // styles we need to apply on draggables
@@ -21,7 +24,7 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'aquamarine' : 'lightgrey',
-  margin: '8px 8px -4px 8px',
+  margin: '10px 30px -4px 10px',
   display: 'inline-block',
   width: 'max-content',
   minWidth: 48 * 2,
@@ -65,6 +68,7 @@ class App extends Component {
                         )}>
                         <DeleteButton click={() => this.props.deleteFixture([indexA, indexB])} />
                           {itemB.width} x {itemB.height}
+                          <div class="box"></div>
                       </div>
                     )}
                   </Draggable>

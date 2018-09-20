@@ -12,6 +12,7 @@
     "react-scripts": "1.1.5",
     "react-sortable-hoc": "^0.8.3",
     "redux": "^4.0.0",
+    "tooltip": "^1.6.1",
     "typeface-roboto-condensed": "^0.0.54"
   },
   "scripts": {
