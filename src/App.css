@@ -45,7 +45,8 @@ button {
   border: 1px solid #9E9E9E;
   box-sizing: border-box;
   padding-top: 25px;
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: bottom; }
   .test:hover .delete-btn svg {
     display: inline; }
 

@@ -68,7 +68,8 @@ class App extends Component {
                         )}>
                         <DeleteButton click={() => this.props.deleteFixture([indexA, indexB])} />
                           {itemB.width} x {itemB.height}
-                          <div class="box"></div>
+                              <div class="box"></div>
+    
                       </div>
                     )}
                   </Draggable>
@@ -76,6 +77,7 @@ class App extends Component {
                 ))}
                 {/* <div class="uprite">*</div> */}
                 {provided.placeholder}
+                
               </div>
             )}
           </Droppable>

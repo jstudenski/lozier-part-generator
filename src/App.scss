@@ -59,7 +59,7 @@ $red: #F44336;
   padding-top: 25px;
 //   overflow: hidden;
   display: inline-block;
-
+  vertical-align:bottom;
   &:hover {
     .delete-btn svg {
       display: inline;
