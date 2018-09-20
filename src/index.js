@@ -7,6 +7,8 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/reducer';
 
+require('typeface-roboto-condensed');
+
 const store = createStore(reducer);
 
 // pass store as prop to Provider component
