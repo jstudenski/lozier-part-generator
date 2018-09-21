@@ -11,10 +11,10 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   height: itemB.height * 2,
   // change background colour if dragging
   background: isDragging ? 'salmon' : 'grey',
-  borderLeftColor: '#fff',
-  borderRightColor: '#fff',
-  borderWidth: '0 1px',
-  boxShadow: isDragging ? '1px 1px 4px grey' : null ,
+  // borderLeftColor: '#fff',
+  // borderRightColor: '#fff',
+  // borderWidth: '0 1px',
+  // boxShadow: isDragging ? '1px 1px 4px grey' : null ,
   fontFamily: 'Roboto Condensed',
   textAlign: 'center',
   position: 'relative',
@@ -49,8 +49,8 @@ class App extends Component {
                 className='droppable-group'>
                 <DeleteButton click={() => this.props.deleteSection(indexA)} />
                 {itemA.map((itemB, indexB) => (
-                  <div class="uprite-container">
-                  {/* <div class="uprite">*</div> */}
+                  // <div className="uprite-container">
+                  // <div className="uprite">*</div>
                   <Draggable
                     key={indexA+''+indexB}
                     draggableId={indexA+''+indexB}
@@ -68,16 +68,15 @@ class App extends Component {
                         )}>
                         <DeleteButton click={() => this.props.deleteFixture([indexA, indexB])} />
                           {itemB.width} x {itemB.height}
-                              <div class="box"></div>
-    
+                        {/* <div className="box"></div> */}
                       </div>
                     )}
                   </Draggable>
-                  </div>
+                  // </div>
                 ))}
-                {/* <div class="uprite">*</div> */}
+                {/* <div className="uprite">*</div> */}
                 {provided.placeholder}
-                
+
               </div>
             )}
           </Droppable>
