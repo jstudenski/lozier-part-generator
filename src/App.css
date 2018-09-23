@@ -43,14 +43,15 @@ button {
   background-color: #e0e0e0;
   border: 1px solid #9E9E9E;
   box-sizing: border-box;
-  padding-top: 25px;
   display: inline-block;
   vertical-align: bottom; }
   .test:hover .delete-btn svg {
     display: inline; }
 
-.droppable-group:hover .delete-btn svg {
-  display: inline; }
+.droppable-group {
+  padding: 0; }
+  .droppable-group:hover .delete-btn svg {
+    display: inline; }
 
 .builder {
   background-color: #ffffff;

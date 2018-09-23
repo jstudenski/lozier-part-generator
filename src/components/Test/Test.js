@@ -9,6 +9,9 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   userSelect: 'none',
   width: itemB.width * 2,
   height: itemB.height * 2,
+  margin: 0,
+  padding: 0,
+
   // change background colour if dragging
   background: isDragging ? 'salmon' : 'grey',
   // borderLeftColor: '#fff',
@@ -18,18 +21,23 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   fontFamily: 'Roboto Condensed',
   textAlign: 'center',
   position: 'relative',
+  // boxSizing: 'border-box',
   // styles we need to apply on draggables
   ...draggableStyle
 });
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? 'aquamarine' : 'lightgrey',
-  margin: '10px 30px -4px 10px',
+   margin: '10px 30px -4px 10px',
+  //  margin: '10px 30px 0px 10px',
   display: 'inline-block',
   width: 'max-content',
   minWidth: (48 * 2),
-  minHeight: (36 * 3),
+  minHeight: (36 * 2),
+//  height: 36 * 2,
+//  blockSize:  36 * 2,
   position: 'relative',
+  // boxSizing: 'border-box',
 });
 
 class App extends Component {

@@ -56,7 +56,7 @@ $red: #F44336;
   background-color: #e0e0e0;
   border: 1px solid #9E9E9E;
   box-sizing: border-box;
-  padding-top: 25px;
+  // padding-top: 25px;
 //   overflow: hidden;
   display: inline-block;
   vertical-align:bottom;
@@ -68,6 +68,7 @@ $red: #F44336;
 }
 
 .droppable-group {
+  padding: 0;
   &:hover {
     .delete-btn svg {
       display: inline;
