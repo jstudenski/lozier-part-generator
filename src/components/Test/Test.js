@@ -27,8 +27,8 @@ const getListStyle = isDraggingOver => ({
   margin: '10px 30px -4px 10px',
   display: 'inline-block',
   width: 'max-content',
-  minWidth: 48 * 2,
-  minHeight: 36 * 2,
+  minWidth: (48 * 2),
+  minHeight: (36 * 3),
   position: 'relative',
 });
 
@@ -68,11 +68,11 @@ class App extends Component {
                         )}>
                         <DeleteButton click={() => this.props.deleteFixture([indexA, indexB])} />
                           {itemB.width} x {itemB.height}
-                        {/* <div className="box"></div> */}
+                      {/* <div className="box"></div> */}
                       </div>
                     )}
                   </Draggable>
-                  // </div>
+
                 ))}
                 {/* <div className="uprite">*</div> */}
                 {provided.placeholder}
