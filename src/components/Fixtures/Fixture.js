@@ -1,7 +1,4 @@
 import React from 'react';
-
-// import { SortableElement } from 'react-sortable-hoc';
-// import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import DeleteButton from '../DeleteButton';
 
@@ -9,7 +6,7 @@ const getItemStyle = (isDragging, draggableStyle, details) => ({
   userSelect: 'none',
   width: details.width * 2,
   height: details.height * 2,
-  background: isDragging ? 'salmon' : 'grey',
+  background: isDragging ? 'salmon' : '#e0e0e0',
   fontFamily: 'Roboto',
   textAlign: 'center',
   position: 'relative',
@@ -27,7 +24,7 @@ const Fixture = (props) => {
       index={index}>
       {(provided, snapshot) => (
         <div
-          className='test'
+          className='fixture'
           ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}
@@ -43,5 +40,18 @@ const Fixture = (props) => {
     </Draggable>
   )
 };
+
+// Fixture.propTypes = {
+//   width: PropTypes.number.isRequired,
+//   height: PropTypes.number.isRequired,
+// };
+
+Fixture.defaultProps = {
+  index: 0,
+  group: 0,
+  details: {width: 48, height: 48},
+};
+
+
 
 export default Fixture;

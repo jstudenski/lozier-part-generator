@@ -52,25 +52,6 @@ $red: #F44336;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-
-.test {
-  margin-bottom: -4px;
-  font-size: .9em;
-  color: #000000;
-  background-color: #e0e0e0;
-  border: 1px solid #9E9E9E;
-  box-sizing: border-box;
-  padding-top: 10px;
-  overflow: hidden;
-  display: inline-block;
-  &:hover {
-    .delete-btn svg {
-      display: inline;
-    }
-  }
-}
-
-
 .droppable-group {
   &:hover {
     .delete-btn svg {
@@ -108,16 +89,8 @@ $red: #F44336;
   position: relative;
 }
 
-// .Fixture {
-//   margin-bottom: -4px;
-//   display: inline-block;
-// }
-
-.builder-item {
-  text-align: center;
-  bottom: 0px;
-  left: 0px;
-  position: absolute;
+.fixture {
+  margin-bottom: -4px;
   font-size: .9em;
   color: #000000;
   background-color: #e0e0e0;
@@ -125,6 +98,18 @@ $red: #F44336;
   box-sizing: border-box;
   padding-top: 10px;
   overflow: hidden;
+  display: inline-block;
+  &:hover {
+    .delete-btn svg {
+      display: inline;
+    }
+  }
+  .builder & {
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+  }
 }
 
 .add-btn {
