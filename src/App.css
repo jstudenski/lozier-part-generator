@@ -43,6 +43,7 @@ button {
   background-color: #e0e0e0;
   border: 1px solid #9E9E9E;
   box-sizing: border-box;
+  overflow: hidden;
   display: inline-block;
   vertical-align: bottom; }
   .test:hover .delete-btn svg {
