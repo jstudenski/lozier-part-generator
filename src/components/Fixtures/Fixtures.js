@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
-// import Fixture from '../Fixture';
+import Fixture from './Fixture';
 import DeleteButton from '../DeleteButton';
-
-const getItemStyle = (isDragging, draggableStyle, itemB) => ({
-  userSelect: 'none',
-  width: itemB.width * 2,
-  height: itemB.height * 2,
-  background: isDragging ? 'salmon' : 'grey',
-  fontFamily: 'Roboto',
-  textAlign: 'center',
-  position: 'relative',
-  // styles we need to apply on draggables
-  ...draggableStyle
-});
 
 const getListStyle = (isDraggingOver, itemA) => ({
   background: isDraggingOver ? 'aquamarine' : 'lightgrey',
@@ -27,8 +15,7 @@ const getListStyle = (isDraggingOver, itemA) => ({
   verticalAlign: 'bottom',
 });
 
-
-class App extends Component {
+class Fixtures extends Component {
   render() {
     return (
       <DragDropContext onDragEnd={this.props.onDragEnd}>
@@ -45,26 +32,7 @@ class App extends Component {
                 className='droppable-group'>
                 <DeleteButton click={() => this.props.deleteSection(indexA)} />
                 {itemA.map((itemB, indexB) => (
-                  <Draggable
-                    key={indexA+''+indexB}
-                    draggableId={indexA+''+indexB}
-                    index={indexB}>
-                    {(provided, snapshot) => (
-                      <div
-                        className='test'
-                        ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          snapshot.isDragging,
-                          provided.draggableProps.style,
-                          itemB
-                        )}>
-                        <DeleteButton click={() => this.props.deleteFixture([indexA, indexB])} />
-                          {itemB.width} x {itemB.height}
-                      </div>
-                    )}
-                  </Draggable>
+                  <Fixture click={() => this.props.deleteFixture([indexA, indexB])} group={indexA} details={itemB} index={indexB}></Fixture>
                 ))}
                 {provided.placeholder}
               </div>
@@ -75,7 +43,6 @@ class App extends Component {
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -91,4 +58,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Fixtures);

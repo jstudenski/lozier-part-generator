@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './normalize.css';
 import 'rc-slider/assets/index.css';
-import Test from './components/Test';
+import Fixtures from './components/Fixtures';
 import Builder from './components/Builder';
 import Parts from './components/Parts';
 // import Diagram from './components/Diagram';
@@ -18,7 +18,7 @@ class App extends Component {
           <Builder />
         </div>
         <div className="row">
-          <Test></Test>
+          <Fixtures></Fixtures>
         </div>
         <div className="row">
           <Parts />

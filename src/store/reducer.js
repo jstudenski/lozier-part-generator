@@ -68,7 +68,9 @@ const reducer = (state = initialState, action) => {
       }
 
     case 'DELETE_FIXTURE':
+
       const [indexA, indexB] = [action.value[0], action.value[1]];
+
       const newArr = [
         ...state.fixtures[indexA].slice(0, indexB),
         ...state.fixtures[indexA].slice(indexB + 1)

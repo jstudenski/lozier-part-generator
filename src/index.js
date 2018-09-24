@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/reducer';
 
 require('typeface-roboto-condensed');
+require('typeface-roboto');
 
 const store = createStore(reducer);
 
