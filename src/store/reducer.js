@@ -93,9 +93,8 @@ const reducer = (state = initialState, action) => {
 
 
       // if the heights don't match
-     const endZone = Object.is(state.fixtures[endArrIndex][0], undefined) ? state.fixtures[startArrIndex][0].height : state.fixtures[endArrIndex][0].height;
+      const endZone = Object.is(state.fixtures[endArrIndex][0], undefined) ? state.fixtures[startArrIndex][0].height : state.fixtures[endArrIndex][0].height;
 
-    //   console.log(typeof state.fixtures[endArrIndex][0].height)
       if (state.fixtures[startArrIndex][0].height !== endZone) return state;
 
       // make copy of current array

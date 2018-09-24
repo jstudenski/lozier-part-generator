@@ -1,3 +1,6 @@
+body {
+  font-family: 'Roboto', sans-serif; }
+
 button {
   outline: 0;
   border: none; }
@@ -12,8 +15,7 @@ button {
 .App-title {
   font-size: 1em;
   float: left;
-  padding-left: 25px;
-  font-family: 'Roboto Condensed', sans-serif; }
+  padding-left: 25px; }
 
 .uprite-container {
   display: inline-block;
@@ -47,9 +49,8 @@ button {
   padding-top: 10px;
   overflow: hidden;
   display: inline-block; }
-
-.test:hover .delete-btn svg {
-  display: inline; }
+  .test:hover .delete-btn svg {
+    display: inline; }
 
 .droppable-group:hover .delete-btn svg {
   display: inline; }

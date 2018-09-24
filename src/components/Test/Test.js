@@ -9,14 +9,14 @@ const getItemStyle = (isDragging, draggableStyle, itemB) => ({
   width: itemB.width * 2,
   height: itemB.height * 2,
   background: isDragging ? 'salmon' : 'grey',
-  fontFamily: 'Roboto Condensed',
+  fontFamily: 'Roboto',
   textAlign: 'center',
   position: 'relative',
   // styles we need to apply on draggables
   ...draggableStyle
 });
 
-const getListStyle = isDraggingOver => ({
+const getListStyle = (isDraggingOver, itemA) => ({
   background: isDraggingOver ? 'aquamarine' : 'lightgrey',
   margin: '8px 8px -4px 8px',
   display: 'inline-block',
@@ -24,6 +24,7 @@ const getListStyle = isDraggingOver => ({
   minWidth: 48 * 2,
   minHeight: 36 * 2,
   position: 'relative',
+  verticalAlign: 'bottom',
 });
 
 
@@ -44,7 +45,6 @@ class App extends Component {
                 className='droppable-group'>
                 <DeleteButton click={() => this.props.deleteSection(indexA)} />
                 {itemA.map((itemB, indexB) => (
-
                   <Draggable
                     key={indexA+''+indexB}
                     draggableId={indexA+''+indexB}
