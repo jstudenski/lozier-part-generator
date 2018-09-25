@@ -79,7 +79,8 @@ button {
   box-sizing: border-box;
   padding-top: 10px;
   overflow: hidden;
-  display: inline-block; }
+  display: inline-block;
+  position: relative; }
   .fixture:hover .delete-btn svg {
     display: inline; }
   .builder .fixture {

@@ -101,6 +101,7 @@ $red: #F44336;
   padding-top: 10px;
   overflow: hidden;
   display: inline-block;
+  position: relative;
   &:hover {
     .delete-btn svg {
       display: inline;
