@@ -40,9 +40,9 @@ $red: #F44336;
   padding: 30px;
 }
 
-.row:nth-child(even) {
-  background: #f1f1f1;
-}
+// .row:nth-child(even) {
+//   background: #f1f1f1;
+// }
 
 .rc-slider-tooltip {
   z-index: 1;
@@ -68,9 +68,11 @@ $red: #F44336;
   height: 240px;
   top: 25px;
   left: 27px;
+  border: 1px solid #eaecef;
 }
 
 .builder-container {
+  border: 1px solid #eaecef;
   background-color: #fff;
   width: 270px;
   /* padding: 25px 0px 36px 5px; */
@@ -81,10 +83,11 @@ $red: #F44336;
 }
 
 .builder-diagram {
+  border-right: 1px solid #eaecef;
   float: left;
   width: 180px;
   height: 310px;
-  background-color: #d6d6d6;
+  background-color: #f6f8fa;
   display: inline-block;
   position: relative;
 }

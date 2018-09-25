@@ -9,41 +9,21 @@ class Parts extends React.Component {
     this.state = {
       counter: 0
     };
-
-    this.renderItems = this.renderItems.bind(this);
   }
-
-
-
-  renderItems(element, index) {
-
-    // we want to do something with that element
-    // this is clean in my opinion, but I have to do the check
-    // return cloneElement(element, {
-    //   key: element.key || index, // this will fail if we dont put the check when element is null
-    // })
-    return (<h1>22</h1>)
-  }
-
 
   render() {
     return (
       <div className='parts'>
-      <h5>fixtures:</h5>
+        <p className="part-row">Fixtures:</p>
         {this.props.fixtures.map((itemA, indexA) => (
            <div>
             {itemA.map((itemB, indexB) => (
-           //   console.log()
-              <p>width: {itemB.height} x height: {itemB.height}</p>
+              <div className="part-row">
+                width: {itemB.height} x height: {itemB.height}
+              </div>
             ))}
           </div>
         ))}
-
-        {/* {this.props.fixtures.map((itemB) => (
-
-          <p>{(itemB) ? itemB : null}</p>
-        ))}; */}
-        {/* {this.props.fixtures.map(this.props.fixtures, this.renderItems)} */}
       </div>
     )
   }

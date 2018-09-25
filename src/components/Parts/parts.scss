@@ -1,6 +1,20 @@
 .parts {
-  background-color: #fffae9;
-  color: #ff5722;
+  background-color: #fff;
+  color: #24292e;
   width: 300px;
-  border-radius: 5px;
+  border-radius: 3px;
+  border: 1px solid #e1e4e8;
+  font-size: 14px;
+  p {
+    margin: 0;
+    border-top: none;
+    background-color: #f6f8fa;
+    font-weight: 600;
+  }
+}
+
+.part-row {
+  padding: 6px 3px 6px 16px;
+  line-height: 20px;
+  border-top: 1px solid #eaecef;
 }
